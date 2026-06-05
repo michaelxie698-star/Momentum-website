@@ -4,425 +4,301 @@
   <meta charset="UTF-8" />
   <title>Fits | Meresa GLP‑1 Pen</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="styles.css" />
   <style>
-    :root {
-      --page-bg: #f4f5f7;
-      --hero-bg: radial-gradient(circle at 20% 15%, #f9fafb, #e7eee9, #d5e0d6);
-      --card-bg: #ffffff;
-      --text-main: #111827;
-      --muted: #6b7280;
-      --accent: #1b6a43;
-      --accent-soft: #e3f0e8;
-      --cta: #f9c94c;
-      --cta-text: #3b2a00;
-      --border: #e5e7eb;
-      --radius-xl: 26px;
-      --radius-lg: 18px;
-      --radius-md: 12px;
-      --shadow-soft: 0 16px 40px rgba(0,0,0,0.14);
-    }
+    /* ── index.html page-specific styles ── */
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    body {
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
-        "Helvetica Neue", Arial, sans-serif;
-      background: var(--page-bg);
-      color: var(--text-main);
-      line-height: 1.5;
-      -webkit-font-smoothing: antialiased;
-    }
-
-    img {
-      max-width: 100%;
-      display: block;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    .max-w {
-      max-width: 1080px;
-      margin: 0 auto;
-      padding: 0 16px;
-    }
-
-    /* Nav */
-    .nav {
-      background: #ffffff;
-      border-bottom: 1px solid var(--border);
-    }
-
-    .nav-inner {
-      height: 74px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    .logo-wrap {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .logo-wordmark {
-      font-size: 22px;
-      font-weight: 800;
-      letter-spacing: 0.06em;
-      color: #1b6a43;
-      font-style: italic;
-      text-decoration: none;
-      line-height: 1;
-    }
-
-    .nav-links {
-      display: none;
-    }
-
-    .nav-cta {
-      display: flex;
-      gap: 10px;
-      font-size: 14px;
-      align-items: center;
-    }
-
-    .btn {
-      border-radius: 999px;
-      padding: 8px 16px;
-      border: 1px solid transparent;
-      cursor: pointer;
-      font-size: 14px;
-      white-space: nowrap;
-    }
-
-    .btn-outline {
-      border-color: var(--border);
-      background: #ffffff;
-      color: var(--text-main);
-    }
-
-    .btn-outline:hover {
-      border-color: #cbd5e1;
-      background: #f9fafb;
-    }
-
-    .btn-primary {
-      border-color: var(--accent);
-      background: var(--accent);
-      color: #ffffff;
-      font-weight: 600;
-    }
-
-    .btn-primary:hover {
-      background: #155233;
-      border-color: #155233;
-    }
-
-    /* Hero (Meresa pen) */
     .hero {
-      background: var(--hero-bg);
-      padding: 48px 0;
+      background: var(--color-surface);
+      padding: var(--sp-24) 0;
     }
 
-    .hero-inner {
-      max-width: 1080px;
-      margin: 0 auto;
-      padding: 0 16px;
+    .hero-grid {
       display: grid;
-      grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
-      gap: 32px;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      gap: var(--sp-16);
       align-items: center;
     }
 
-    .hero-eyebrow {
-      font-size: 12px;
-      text-transform: uppercase;
-      letter-spacing: 0.16em;
-      color: var(--muted);
-      margin-bottom: 6px;
+    .hero-image-col {
+      order: -1;
     }
 
-    .hero-title-main {
-      font-size: 26px;
-      color: #0f172a;
-      margin-bottom: 4px;
-    }
-
-    .hero-title-highlight {
-      font-size: 26px;
-      color: var(--accent);
-      margin-bottom: 10px;
-    }
-
-    .hero-sub {
-      font-size: 14px;
-      color: var(--muted);
-      max-width: 380px;
-      margin-bottom: 16px;
-    }
-
-    .hero-cta-row {
+    .hero-text-col {
       display: flex;
-      gap: 10px;
-      align-items: center;
+      flex-direction: column;
+      gap: var(--sp-6);
     }
 
-    .hero-btn-explore {
+    .hero-explore-link {
       display: inline-flex;
       align-items: center;
-      justify-content: center;
-      gap: 6px;
-      padding: 10px 20px;
-      border-radius: 999px;
-      border: 1px solid var(--accent);
-      background: #e5f3ea;
-      color: var(--accent);
+      gap: var(--sp-2);
       font-size: 14px;
-      font-weight: 600;
-      cursor: pointer;
+      font-weight: 500;
+      color: var(--color-brand);
       text-decoration: none;
+      transition: color 0.15s ease;
     }
 
-    .hero-btn-explore:hover {
-      background: #d6ecdf;
+    .hero-explore-link:hover {
+      color: var(--color-brand-dark);
     }
 
-    .hero-note {
-      font-size: 11px;
-      color: var(--muted);
-      margin-top: 10px;
-      max-width: 380px;
+    .hero-explore-link svg {
+      transition: transform 0.15s ease;
     }
 
-    .hero-image-wrap {
-      border-radius: 40px;
-      overflow: hidden;
-      box-shadow: 0 22px 60px rgba(0,0,0,0.22);
-      border: 1px solid #d6dfd9;
-      background: #f5f7f6;
+    .hero-explore-link:hover svg {
+      transform: translateX(3px);
     }
 
-    .hero-image-wrap img {
-      width: 100%;
-      height: auto;
+    .stats-section {
+      background: var(--color-bg);
+      padding: var(--sp-16) 0;
+      border-top: 1px solid var(--color-border);
+      border-bottom: 1px solid var(--color-border);
     }
 
-    /* Bottom section: weight loss with Meresa */
-    .section {
-      padding: 40px 0 48px;
-    }
-
-    .section-header {
-      margin-bottom: 18px;
-      text-align: center;
-    }
-
-    .section-eyebrow {
-      font-size: 12px;
-      text-transform: uppercase;
-      letter-spacing: 0.16em;
-      color: var(--muted);
-      margin-bottom: 6px;
-    }
-
-    .section-title {
-      font-size: 24px;
-      margin-bottom: 6px;
-    }
-
-    .section-sub {
-      font-size: 14px;
-      color: var(--muted);
-      max-width: 520px;
-      margin: 0 auto;
-    }
-
-    .two-col {
+    .stats-grid {
       display: grid;
-      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.1fr);
-      gap: 28px;
-      align-items: center;
-      margin-top: 18px;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: var(--sp-6);
     }
 
-    .weight-copy-card {
-      border-radius: 28px;
-      background: #ffffff;
-      border: 1px solid var(--border);
-      padding: 22px 22px 26px;
-      box-shadow: var(--shadow-soft);
-      font-size: 15px;
-      color: var(--muted);
+    .how-section {
+      background: var(--color-surface);
     }
 
-    .weight-copy-card h3 {
-      font-size: 18px;
-      color: var(--text-main);
-      margin-bottom: 10px;
+    .how-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      gap: var(--sp-8);
+      align-items: start;
     }
 
-    .weight-copy-card p {
-      margin-bottom: 10px;
-      font-size: 15px;
-    }
-
-    .inject-photo {
-      border-radius: 32px;
-      overflow: hidden;
-      box-shadow: var(--shadow-soft);
-      border: 1px solid var(--border);
-    }
-
-    .inject-photo img {
-      width: 100%;
-      height: auto;
-      display: block;
-    }
-
-    .inject-photo-caption {
-      margin-top: 10px;
-      font-size: 13px;
-      color: var(--muted);
-    }
-
-    /* Footer */
-    .footer {
-      margin-top: 16px;
-      padding: 20px 0 18px;
-      border-top: 1px solid var(--border);
-      background: #ffffff;
-      font-size: 11px;
-      color: var(--muted);
-    }
-
-    .footer-inner {
-      max-width: 1080px;
-      margin: 0 auto;
-      padding: 0 16px;
+    .how-copy {
       display: flex;
-      justify-content: space-between;
-      gap: 10px;
-      flex-wrap: wrap;
+      flex-direction: column;
+    }
+
+    .how-copy .text-h2 {
+      margin-bottom: var(--sp-6);
+    }
+
+    .how-copy p {
+      font-size: 14px;
+      line-height: 1.65;
+      color: var(--color-ink-secondary);
+    }
+
+    .how-copy p + p {
+      margin-top: var(--sp-4);
+    }
+
+    .how-image {
+      display: flex;
+      flex-direction: column;
+      gap: var(--sp-3);
+    }
+
+    .how-image .card-image {
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
     }
 
     @media (max-width: 900px) {
-      .hero-inner,
-      .two-col {
+      .hero-grid {
         grid-template-columns: 1fr;
+        gap: var(--sp-8);
       }
-      .hero-inner {
-        gap: 20px;
+
+      .hero-image-col {
+        order: -1;
+      }
+
+      .stats-grid {
+        gap: var(--sp-3);
+      }
+
+      .how-grid {
+        grid-template-columns: 1fr;
+        gap: var(--sp-8);
       }
     }
 
     @media (max-width: 600px) {
-      .hero-title-main,
-      .hero-title-highlight {
-        font-size: 22px;
+      .hero {
+        padding: var(--sp-16) 0;
       }
-      .section-title {
-        font-size: 20px;
+
+      .hero-grid {
+        gap: var(--sp-6);
+      }
+
+      .stats-grid {
+        grid-template-columns: 1fr;
+        gap: var(--sp-3);
+      }
+
+      .card-stat {
+        display: flex;
+        align-items: center;
+        gap: var(--sp-4);
+        text-align: left;
+        padding: var(--sp-4);
+      }
+
+      .card-stat-value {
+        margin-bottom: 0;
+        white-space: nowrap;
       }
     }
   </style>
 </head>
 <body>
-  <!-- Nav -->
-  <header class="nav">
-    <div class="max-w nav-inner">
-      <div class="logo-wrap">
-        <a href="index.html" class="logo-wordmark">FITS</a>
-      </div>
-      <nav class="nav-links">
-        <!-- intentionally empty -->
-      </nav>
-      <div class="nav-cta">
-        <button class="btn btn-outline" onclick="location.href='fits-pen.html'">
+
+  <header class="site-nav" id="site-nav">
+    <div class="container nav-inner">
+      <a href="index.html" class="nav-logo">FITS</a>
+      <nav class="nav-actions" aria-label="Site navigation">
+        <a href="fits-pen.html" class="btn-ghost btn">
           Explore Meresa
-        </button>
-      </div>
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+            <path d="M3 7h8M8 4l3 3-3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+      </nav>
     </div>
   </header>
 
-  <!-- Hero -->
-  <section class="hero" id="pen">
-    <div class="hero-inner">
-      <div>
-        <div class="hero-eyebrow">Your GLP‑1 moment</div>
-        <div class="hero-title-main">Your weight loss</div>
-        <div class="hero-title-highlight">breakthrough is here.</div>
-        <p class="hero-sub">
-          MERESA (semaglutide pen), is built to make weekly dosing feel less intimidating and more approachable.
-        </p>
-        <div class="hero-cta-row">
-          <a href="fits-pen.html" class="hero-btn-explore">
-            <span>Explore Meresa </span>
-            <span>→</span>
-          </a>
-        </div>
-        <p class="hero-note">
-          A once‑weekly GLP‑1 pen, prescribed and monitored by licensed clinicians, for eligible patients.
-        </p>
-      </div>
-      <div class="hero-image-wrap">
-        <img src="dual.png" alt="Meresa GLP-1 pen hero" />
-      </div>
-    </div>
-  </section>
+  <main>
 
-  <!-- Bottom: weight loss with Meresa -->
-  <section class="section" id="see">
-    <div class="max-w">
-      <div class="section-header">
-        <div class="section-eyebrow">Why Meresa</div>
-        <h2 class="section-title">Weight loss designed around you.</h2>
-        <p class="section-sub">
-          Meresa is a GLP‑1 injected once per week, working with your body’s appetite signals and a structured plan from Fits clinicians.
-        </p>
-      </div>
+    <section class="hero section--white" id="pen">
+      <div class="container">
+        <div class="hero-grid">
 
-      <div style="height: 16px;"></div>
-
-      <div class="two-col">
-        <div class="weight-copy-card">
-          <h3>How Meresa supports progress</h3>
-          <p>
-            GLP‑1 medications like Meresa mimic hormones that help regulate appetite and blood sugar, allowing individuals to feel satiated and satisfied for longer periods of time when combined with changes in eating and activity.
-          </p>
-          <p>
-            With Fits, weekly Meresa injections are paired with clinician‑guided dose adjustments, so your treatment can be slowed down or stepped up based on how you feel and how your body responds over time.
-          </p>
-          <p>
-            Meresa is meant to be one part of a broader plan: nutrition habits, movement you can stick with, sleep, and ongoing check‑ins that help keep weight loss sustainable rather than a short‑term sprint.
-          </p>
-        </div>
-        <div>
-          <div class="inject-photo">
-            <img src="fat.jpg" alt="Person using the Meresa GLP-1 injection pen" />
+          <div class="hero-image-col">
+            <div class="card-image">
+              <img
+                src="dual.png"
+                alt="Two Meresa semaglutide injection pens"
+                fetchpriority="high"
+                width="800"
+                height="900"
+              />
+            </div>
           </div>
-          <p class="inject-photo-caption">
-            Meresa is taken once a week on the same day, with dose changes guided by your Fits clinician over time.
-          </p>
+
+          <div class="hero-text-col">
+            <p class="eyebrow">GLP‑1 pen · once weekly</p>
+            <div>
+              <h1 class="text-display">Your weight loss breakthrough is here.</h1>
+              <p class="text-body-lg" style="margin-top: var(--sp-6);">
+                MERESA (semaglutide injection) is designed to make weekly dosing feel less intimidating and more approachable.
+              </p>
+            </div>
+            <a href="fits-pen.html" class="hero-explore-link">
+              Explore Meresa
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </a>
+            <p class="text-legal">
+              A once‑weekly GLP‑1 pen, prescribed and monitored by licensed clinicians, for eligible patients.
+            </p>
+          </div>
+
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Footer -->
-  <footer class="footer">
-    <div class="footer-inner">
-      <div>
-        Fits provides access to GLP‑1 medications and clinical care through an online platform. This website does not replace professional medical advice.
+    <section class="stats-section" aria-label="Key features">
+      <div class="container">
+        <div class="stats-grid">
+          <div class="card-stat">
+            <div class="card-stat-value">Once weekly</div>
+            <div class="card-stat-label">Dosing schedule</div>
+          </div>
+          <div class="card-stat">
+            <div class="card-stat-value">Clinician-guided</div>
+            <div class="card-stat-label">Dose adjustments over time</div>
+          </div>
+          <div class="card-stat">
+            <div class="card-stat-value">Online care</div>
+            <div class="card-stat-label">Where available</div>
+          </div>
+        </div>
       </div>
-      <div>© Fits Health. All rights reserved.</div>
+    </section>
+
+    <section class="section how-section section--white" id="see">
+      <div class="container">
+        <div class="section-header">
+          <p class="eyebrow">Why Meresa</p>
+          <h2 class="text-h2">Weight loss designed around you.</h2>
+          <p class="text-body">
+            Meresa is a GLP‑1 injected once per week, working with your body's appetite signals and a structured plan from Fits clinicians.
+          </p>
+        </div>
+
+        <div class="how-grid">
+          <div class="how-copy card">
+            <h3 class="text-h3" style="margin-bottom: var(--sp-6);">How Meresa supports progress</h3>
+            <p>
+              GLP‑1 medications like Meresa mimic hormones that help regulate appetite and blood sugar, allowing individuals to feel satiated and satisfied for longer periods of time when combined with changes in eating and activity.
+            </p>
+            <p>
+              With Fits, weekly Meresa injections are paired with clinician‑guided dose adjustments, so your treatment can be slowed down or stepped up based on how you feel and how your body responds over time.
+            </p>
+            <p>
+              Meresa is meant to be one part of a broader plan: nutrition habits, movement you can stick with, sleep, and ongoing check‑ins that help keep weight loss sustainable rather than a short‑term sprint.
+            </p>
+          </div>
+
+          <div class="how-image">
+            <div class="card-image how-image-card">
+              <img
+                src="fat.jpg"
+                alt="Person using the Meresa GLP-1 injection pen"
+                loading="lazy"
+                width="800"
+                height="960"
+              />
+            </div>
+            <p class="text-caption">
+              Meresa is taken once a week on the same day, with dose changes guided by your Fits clinician over time.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-top">
+        <span class="nav-logo" aria-label="Fits Health">FITS</span>
+      </div>
+      <div class="footer-bottom">
+        <p class="text-legal">
+          Fits provides access to GLP‑1 medications and clinical care through an online platform. This website does not replace professional medical advice.
+        </p>
+        <p class="text-legal" style="white-space: nowrap;">© Fits Health. All rights reserved.</p>
+      </div>
     </div>
   </footer>
+
+  <script>
+    (function () {
+      var nav = document.getElementById('site-nav');
+      if (!nav) return;
+      window.addEventListener('scroll', function () {
+        nav.classList.toggle('scrolled', window.scrollY > 20);
+      }, { passive: true });
+    }());
+  </script>
+
 </body>
 </html>
