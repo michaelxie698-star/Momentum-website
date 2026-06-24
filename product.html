@@ -9,21 +9,22 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/styles.css">
+<link rel="icon" type="image/png" href="assets/fits-logo.png">
 </head>
 <body>
 
 <nav class="navbar">
   <div class="container nav-inner">
-    <a href="index.html" class="nav-logo">FITS</a>
+    <a href="index.html" class="nav-brand" aria-label="FITS home">
+      <img src="assets/fits-logo.png" alt="FITS" class="nav-brand-logo">
+    </a>
     <div class="nav-links">
       <a href="index.html">Home</a>
-      <a href="product.html" class="active">Product</a>
-      <a href="safety.html">Safety</a>
+      <a href="product.html" class="active">Product Information</a>
       <a href="faq.html">FAQ</a>
-      <a href="contact.html">Contact</a>
+      <a href="about.html">About FITS</a>
     </div>
     <div class="nav-cta">
-      <a href="contact.html" class="btn btn-primary btn-sm">Request Access</a>
       <button class="nav-toggle" aria-label="Open menu"><span></span><span></span><span></span></button>
     </div>
   </div>
@@ -32,11 +33,9 @@
 <div class="mobile-overlay"></div>
 <div class="mobile-menu">
   <a href="index.html">Home</a>
-  <a href="product.html">Product</a>
-  <a href="safety.html">Safety</a>
+  <a href="product.html">Product Information</a>
   <a href="faq.html">FAQ</a>
-  <a href="contact.html">Contact</a>
-  <a href="contact.html" class="btn btn-primary" style="margin-top:24px; width:100%;">Request Access</a>
+  <a href="about.html">About FITS</a>
 </div>
 
 <section class="page-hero">
@@ -52,14 +51,13 @@
 <section class="section">
   <div class="container split">
     <div class="split-image reveal gold-mark">
-      <img src="assets/maresa-pen-banner.png" alt="MARESA semaglutide injection pen">
+      <img src="assets/maresa-pens-hero.png" alt="MARESA semaglutide injection pens">
     </div>
     <div class="split-copy reveal">
       <span class="eyebrow">Overview</span>
       <h2>What is MARESA&reg;?</h2>
       <p>MARESA&reg; is a semaglutide injection, administered once weekly. FITS provides product education, ordering coordination, and customer support related to MARESA&reg; access.</p>
       <p>FITS does not manufacture MARESA&reg; and does not make medical claims beyond approved product information.</p>
-      <a href="safety.html" class="btn btn-outline">View Safety Information</a>
     </div>
   </div>
 </section>
@@ -102,7 +100,7 @@
     <div class="split-copy reveal">
       <span class="eyebrow">Product Experience</span>
       <h2>Information support, from first question to ongoing use.</h2>
-      <p>FITS provides customers with packaging visuals, product education materials, and ordering guidance throughout the access journey.</p>
+      <p>FITS provides customers with product education materials and ordering guidance throughout the access journey.</p>
       <p>Our support team helps customers understand product format, scheduling, and what to expect from the ordering process — without offering medical advice.</p>
     </div>
     <div class="split-image reveal gold-mark">
@@ -111,41 +109,17 @@
   </div>
 </section>
 
-<!-- GALLERY -->
-<section id="gallery" class="section section-alt">
+<!-- EDITORIAL BANNER -->
+<section class="section section-alt">
   <div class="container">
-    <div class="section-head reveal">
-      <span class="eyebrow">Product Gallery</span>
-      <h2>Packaging &amp; device visuals.</h2>
-    </div>
-    <div class="gallery-grid">
-      <div class="gallery-item wide reveal">
-        <img src="assets/maresa-pen-banner.png" alt="MARESA pen, full view">
-      </div>
-      <div class="gallery-item reveal">
-        <img src="assets/maresa-pens-hero.png" alt="MARESA pens, pair">
-      </div>
-      <div class="gallery-item reveal">
-        <img src="assets/maresa-injection-shot.png" alt="MARESA administration detail">
-      </div>
-      <div class="placeholder-block reveal">
-        <div class="ph-icon">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
-        </div>
-        <span>product-on-stone-background</span>
-      </div>
-      <div class="placeholder-block reveal">
-        <div class="ph-icon">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
-        </div>
-        <span>minimalist-packaging-shot</span>
-      </div>
+    <div class="editorial-banner reveal gold-mark">
+      <img src="assets/maresa-pen-banner.png" alt="MARESA once-weekly semaglutide injection">
     </div>
   </div>
 </section>
 
 <!-- DOCUMENTATION -->
-<section id="docs" class="section">
+<section id="docs" class="section section-alt">
   <div class="container">
     <div class="section-head reveal">
       <span class="eyebrow">Documentation</span>
@@ -155,14 +129,13 @@
     <div class="doc-buttons reveal">
       <a href="#" class="btn btn-outline">Product Information</a>
       <a href="#" class="btn btn-outline">Patient Guide</a>
-      <a href="safety.html" class="btn btn-outline">Safety Information</a>
-      <a href="contact.html" class="btn btn-primary">Contact FITS</a>
+      <a href="faq.html" class="btn btn-primary">View FAQ</a>
     </div>
   </div>
 </section>
 
 <!-- DISCLAIMER -->
-<section class="section section-alt" style="padding-top:0;">
+<section class="section" style="padding-top:0;">
   <div class="container">
     <div class="disclaimer-box reveal">
       Information on this page is for educational and business presentation purposes only and should not replace medical guidance from a licensed healthcare professional.
@@ -174,36 +147,28 @@
   <div class="container">
     <div class="footer-grid">
       <div class="footer-brand">
-        <span class="nav-logo">FITS</span>
+        <img src="assets/fits-logo.png" alt="FITS" class="footer-brand-logo">
         <p>A refined access and distribution platform for MARESA&reg;.</p>
-        <div class="social-icons" style="margin-top:24px;">
-          <a href="#" aria-label="LinkedIn"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5C4.98 4.88 3.85 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.5 8h4V23h-4V8zm7 0h3.8v2.1h.05c.53-1 1.83-2.1 3.77-2.1 4 0 4.7 2.6 4.7 6V23h-4v-6.5c0-1.6 0-3.6-2.2-3.6s-2.5 1.7-2.5 3.5V23h-4V8z"/></svg></a>
-          <a href="#" aria-label="X"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M18.9 1h3.7l-8 9.2L24 23h-7.3l-5.7-7.4L4.3 23H.6l8.6-9.8L0 1h7.5l5.2 6.8L18.9 1z"/></svg></a>
-        </div>
       </div>
       <div class="footer-col">
         <h5>FITS</h5>
         <a href="index.html">Home</a>
-        <a href="contact.html">Investor Relations</a>
-        <a href="contact.html">Business Partnerships</a>
+        <a href="about.html">About FITS</a>
       </div>
       <div class="footer-col">
         <h5>Product</h5>
         <a href="product.html">Product Information</a>
-        <a href="product.html#gallery">Product Gallery</a>
         <a href="product.html#docs">Documentation</a>
       </div>
       <div class="footer-col">
-        <h5>Safety</h5>
-        <a href="safety.html">Safety Information</a>
-        <a href="safety.html#emergency">Emergency Notice</a>
-        <a href="faq.html">Safety FAQ</a>
+        <h5>Support</h5>
+        <a href="faq.html">FAQ</a>
       </div>
       <div class="footer-col">
-        <h5>Legal</h5>
+        <h5>Company</h5>
+        <a href="mailto:rico@fits.health">rico@fits.health</a>
         <a href="#">Privacy Policy</a>
         <a href="#">Terms of Service</a>
-        <a href="safety.html">Medical Disclaimer</a>
       </div>
     </div>
     <div class="footer-bottom"><p>&copy; 2026 FITS. All rights reserved.</p></div>

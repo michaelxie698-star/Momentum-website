@@ -9,7 +9,6 @@ document.addEventListener('DOMContentLoaded', () => {
   initBackToTop();
   initAccordions();
   initFaqSearch();
-  initContactForm();
 });
 
 /* ---------------- Navbar scroll state ---------------- */
@@ -153,75 +152,4 @@ function initFaqSearch() {
   });
 
   applyFilter();
-}
-
-/* ---------------- Contact form ---------------- */
-function initContactForm() {
-  const form = document.querySelector('.contact-form');
-  if (!form) return;
-
-  const fields = {
-    name: { el: form.querySelector('#field-name'), validate: v => v.trim().length >= 2, msg: 'Please enter your full name.' },
-    email: { el: form.querySelector('#field-email'), validate: v => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v), msg: 'Please enter a valid email address.' },
-    phone: { el: form.querySelector('#field-phone'), validate: v => v.trim() === '' || /^[0-9+()\-\s]{7,}$/.test(v), msg: 'Please enter a valid phone number.' },
-    inquiryType: { el: form.querySelector('#field-inquiry'), validate: v => v.trim() !== '', msg: 'Please select an inquiry type.' },
-    message: { el: form.querySelector('#field-message'), validate: v => v.trim().length >= 10, msg: 'Please enter a message (10+ characters).' }
-  };
-
-  Object.values(fields).forEach(field => {
-    if (!field.el) return;
-    field.el.addEventListener('blur', () => validateField(field));
-    field.el.addEventListener('input', () => {
-      const group = field.el.closest('.form-group');
-      if (group && group.classList.contains('error') && field.validate(field.el.value)) {
-        group.classList.remove('error');
-      }
-    });
-  });
-
-  function validateField(field) {
-    const group = field.el.closest('.form-group');
-    const valid = field.validate(field.el.value);
-    if (group) group.classList.toggle('error', !valid);
-    return valid;
-  }
-
-  form.addEventListener('submit', (e) => {
-    e.preventDefault();
-    let allValid = true;
-    Object.values(fields).forEach(field => {
-      if (!field.el) return;
-      if (!validateField(field)) allValid = false;
-    });
-
-    if (!allValid) {
-      const firstError = form.querySelector('.form-group.error');
-      firstError && firstError.scrollIntoView({ behavior: 'smooth', block: 'center' });
-      return;
-    }
-
-    // No data is actually transmitted — presentation only.
-    showSuccessModal();
-    form.reset();
-  });
-}
-
-function showSuccessModal() {
-  const modal = document.querySelector('.modal-overlay');
-  if (!modal) return;
-  modal.classList.add('open');
-  document.body.style.overflow = 'hidden';
-
-  const close = () => {
-    modal.classList.remove('open');
-    document.body.style.overflow = '';
-  };
-
-  modal.querySelectorAll('[data-modal-close]').forEach(btn => {
-    btn.addEventListener('click', close, { once: true });
-  });
-
-  modal.addEventListener('click', (e) => {
-    if (e.target === modal) close();
-  }, { once: true });
 }
