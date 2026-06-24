@@ -1,798 +1,254 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>FITS&#160;&#8212; MARESA&#174; GLP&#8209;1</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <style>
-/* FITS — MARESA® Design System
-   Apple × F1 Telemetry Hybrid
-   ============================================ */
-
-*, *::before, *::after {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-:root {
-  --white:       #ffffff;
-  --off-white:   #f5f5f7;
-  --black:       #000000;
-  --ink:         #1d1d1f;
-  --ink-2:       #3d3d40;
-  --ink-3:       #6e6e73;
-  --ink-4:       #a0a0a8;
-  --border:      #d2d2d7;
-  --border-lt:   #e8e8ed;
-  --brand:       #1b6a43;
-  --brand-dim:   #0f4a2e;
-  --warn:        #b45309;
-  --warn-bg:     #fffbeb;
-  --warn-border: #fde68a;
-  --max:         1080px;
-  --font:        system-ui, -apple-system, BlinkMacSystemFont,
-                 "Helvetica Neue", Arial, sans-serif;
-}
-
-html {
-  font-size: 16px;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-rendering: optimizeLegibility;
-}
-
-body {
-  font-family: var(--font);
-  background: var(--white);
-  color: var(--ink);
-  line-height: 1.5;
-  overflow-x: hidden;
-}
-
-img { display: block; max-width: 100%; }
-a { color: inherit; text-decoration: none; }
-button { font-family: var(--font); cursor: pointer; }
-
-/* ── Container ── */
-.wrap {
-  max-width: var(--max);
-  margin: 0 auto;
-  padding: 0 40px;
-}
-
-/* ── Navigation ── */
-.site-nav {
-  height: 44px;
-  background: rgba(255,255,255,0.88);
-  backdrop-filter: saturate(180%) blur(20px);
-  -webkit-backdrop-filter: saturate(180%) blur(20px);
-  border-bottom: 0.5px solid var(--border-lt);
-  position: sticky;
-  top: 0;
-  z-index: 100;
-}
-
-.nav-inner {
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 32px;
-  position: relative;
-}
-
-.nav-logo {
-  font-size: 14px;
-  font-weight: 800;
-  font-style: italic;
-  letter-spacing: 0.04em;
-  color: var(--brand);
-  text-decoration: none;
-  position: absolute;
-  left: 40px;
-}
-
-.nav-logo:hover { opacity: 0.7; }
-
-.nav-link {
-  font-size: 12px;
-  color: var(--ink-3);
-  letter-spacing: 0.01em;
-  transition: color 0.15s;
-  text-decoration: none;
-}
-
-.nav-link:hover { color: var(--ink); }
-
-.nav-back {
-  position: absolute;
-  right: 40px;
-  font-size: 12px;
-  color: var(--ink-3);
-  transition: color 0.15s;
-}
-
-.nav-back:hover { color: var(--ink); }
-
-/* ── Phase label ── */
-.phase-label {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  font-size: 9px;
-  font-weight: 700;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--brand);
-  margin-bottom: 20px;
-}
-
-.phase-label::before,
-.phase-label::after {
-  content: '';
-  display: block;
-  height: 1px;
-  background: var(--brand);
-  flex: 0 0 24px;
-}
-
-.phase-label.left-only::after { display: none; }
-.phase-label.left-only::before { flex: 0 0 24px; }
-
-/* ── Telemetry strip ── */
-.telemetry-strip {
-  background: var(--off-white);
-  border-top: 0.5px solid var(--border-lt);
-  border-bottom: 0.5px solid var(--border-lt);
-  padding: 0;
-}
-
-.telemetry-inner {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-}
-
-.tele-item {
-  padding: 18px 28px;
-  border-right: 0.5px solid var(--border-lt);
-}
-
-.tele-item:last-child { border-right: none; }
-
-.tele-val {
-  font-size: 22px;
-  font-weight: 300;
-  letter-spacing: -0.02em;
-  color: var(--ink);
-  line-height: 1;
-  margin-bottom: 4px;
-}
-
-.tele-val sup {
-  font-size: 9px;
-  font-weight: 600;
-  color: var(--brand);
-  letter-spacing: 0.08em;
-  vertical-align: super;
-  margin-left: 1px;
-}
-
-.tele-key {
-  font-size: 9px;
-  font-weight: 600;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--ink-3);
-}
-
-/* ── Annotation card ── */
-.anno-card {
-  border: 0.5px solid var(--border);
-  border-radius: 6px;
-  padding: 14px 16px;
-}
-
-.anno-card + .anno-card { margin-top: 10px; }
-
-.anno-label {
-  font-size: 8px;
-  font-weight: 700;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--brand);
-  margin-bottom: 4px;
-}
-
-.anno-val {
-  font-size: 18px;
-  font-weight: 300;
-  letter-spacing: -0.02em;
-  color: var(--ink);
-  line-height: 1.1;
-}
-
-.anno-unit {
-  font-size: 9px;
-  color: var(--ink-3);
-  margin-top: 3px;
-  letter-spacing: 0.04em;
-}
-
-/* ── Typography ── */
-.t-display {
-  font-size: clamp(36px, 5vw, 56px);
-  font-weight: 200;
-  letter-spacing: -0.03em;
-  line-height: 1.06;
-  color: var(--ink);
-}
-
-.t-display em {
-  font-style: italic;
-  color: var(--brand);
-}
-
-.t-display-w {
-  font-size: clamp(32px, 4.5vw, 50px);
-  font-weight: 200;
-  letter-spacing: -0.03em;
-  line-height: 1.08;
-  color: var(--white);
-}
-
-.t-h1 {
-  font-size: clamp(26px, 3.5vw, 38px);
-  font-weight: 300;
-  letter-spacing: -0.025em;
-  line-height: 1.1;
-  color: var(--ink);
-}
-
-.t-h2 {
-  font-size: 20px;
-  font-weight: 500;
-  letter-spacing: -0.01em;
-  line-height: 1.25;
-  color: var(--ink);
-}
-
-.t-body {
-  font-size: 15px;
-  line-height: 1.75;
-  color: var(--ink-2);
-}
-
-.t-body-w {
-  font-size: 15px;
-  line-height: 1.75;
-  color: rgba(255,255,255,0.65);
-}
-
-.t-small {
-  font-size: 13px;
-  line-height: 1.65;
-  color: var(--ink-2);
-}
-
-.t-small-w {
-  font-size: 13px;
-  line-height: 1.65;
-  color: rgba(255,255,255,0.55);
-}
-
-.t-legal {
-  font-size: 11px;
-  line-height: 1.6;
-  color: var(--ink-4);
-}
-
-.t-caption {
-  font-size: 12px;
-  color: var(--ink-3);
-  line-height: 1.55;
-}
-
-/* ── Sections ── */
-.sec-white {
-  background: var(--white);
-}
-
-.sec-off {
-  background: var(--off-white);
-}
-
-.sec-black {
-  background: var(--black);
-}
-
-.sec-pad {
-  padding: 80px 0;
-}
-
-.sec-pad-sm {
-  padding: 56px 0;
-}
-
-/* ── 2-column grid ── */
-.grid-2 {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 40px;
-  align-items: center;
-}
-
-/* ── Editorial link ── */
-.ed-link {
-  font-size: 13px;
-  color: var(--brand);
-  letter-spacing: 0.01em;
-  transition: opacity 0.15s;
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
-}
-
-.ed-link:hover { opacity: 0.65; }
-
-/* ── Safety disclosure rows ── */
-.disclosure-list {
-  border-top: 0.5px solid var(--border-lt);
-}
-
-.disclosure-item {
-  border-bottom: 0.5px solid var(--border-lt);
-}
-
-.disclosure-btn {
-  width: 100%;
-  background: none;
-  border: none;
-  padding: 20px 0;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 16px;
-  text-align: left;
-}
-
-.disclosure-btn:focus-visible {
-  outline: 2px solid var(--brand);
-  outline-offset: 2px;
-}
-
-.disc-left {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-}
-
-.disc-phase-tag {
-  font-size: 8px;
-  font-weight: 700;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--brand);
-}
-
-.disc-title {
-  font-size: 14px;
-  font-weight: 400;
-  color: var(--ink);
-  letter-spacing: -0.005em;
-}
-
-.disc-icon {
-  font-size: 20px;
-  font-weight: 200;
-  color: var(--ink-3);
-  line-height: 1;
-  transition: transform 0.2s ease;
-  flex-shrink: 0;
-}
-
-.disclosure-item.open .disc-icon {
-  transform: rotate(45deg);
-}
-
-.disclosure-body {
-  display: none;
-  padding: 0 0 22px;
-}
-
-.disclosure-item.open .disclosure-body {
-  display: block;
-}
-
-.disclosure-body p {
-  font-size: 14px;
-  line-height: 1.7;
-  color: var(--ink-2);
-  margin-bottom: 10px;
-}
-
-.disclosure-body p:last-child { margin-bottom: 0; }
-
-.disclosure-body ul {
-  padding-left: 18px;
-  margin-top: 8px;
-}
-
-.disclosure-body li {
-  font-size: 14px;
-  line-height: 1.65;
-  color: var(--ink-2);
-  margin-bottom: 4px;
-}
-
-/* ── Warning block ── */
-.warn-block {
-  border-left: 3px solid var(--warn);
-  background: var(--warn-bg);
-  padding: 20px 24px;
-  margin: 8px 0;
-}
-
-.warn-badge {
-  display: inline-block;
-  font-size: 8px;
-  font-weight: 800;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--warn);
-  border: 1px solid var(--warn-border);
-  padding: 2px 8px;
-  border-radius: 2px;
-  margin-bottom: 12px;
-}
-
-.warn-block p {
-  font-size: 13px;
-  line-height: 1.7;
-  color: var(--ink-2);
-  margin-bottom: 8px;
-}
-
-.warn-block p:last-child { margin-bottom: 0; }
-
-.warn-block ul {
-  padding-left: 18px;
-  margin: 6px 0 8px;
-}
-
-.warn-block li {
-  font-size: 13px;
-  line-height: 1.65;
-  color: var(--ink-2);
-  margin-bottom: 4px;
-}
-
-.warn-subhead {
-  font-size: 12px;
-  font-weight: 600;
-  color: var(--ink);
-  margin: 14px 0 5px;
-  letter-spacing: -0.005em;
-}
-
-/* ── Safety sections ── */
-.safety-section {
-  padding: 36px 0;
-  border-bottom: 0.5px solid var(--border-lt);
-}
-
-.safety-section:last-child {
-  border-bottom: none;
-}
-
-.safety-section .t-h2 {
-  margin-bottom: 12px;
-}
-
-.safety-body p {
-  font-size: 14px;
-  line-height: 1.75;
-  color: var(--ink-2);
-  margin-bottom: 10px;
-}
-
-.safety-body p:last-child { margin-bottom: 0; }
-
-.safety-body ul {
-  padding-left: 20px;
-  margin: 10px 0;
-}
-
-.safety-body li {
-  font-size: 14px;
-  line-height: 1.65;
-  color: var(--ink-2);
-  margin-bottom: 5px;
-}
-
-/* ── Product bullets ── */
-.product-bullets {
-  list-style: none;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
-
-.product-bullets li {
-  font-size: 13px;
-  line-height: 1.55;
-  color: var(--ink-2);
-  padding-left: 14px;
-  position: relative;
-}
-
-.product-bullets li::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 7px;
-  width: 4px;
-  height: 4px;
-  border-radius: 50%;
-  background: var(--brand);
-}
-
-/* ── Safety link ── */
-.safety-link {
-  font-size: 12px;
-  color: var(--brand);
-  text-decoration: underline;
-  text-underline-offset: 3px;
-  transition: opacity 0.15s;
-}
-
-.safety-link:hover { opacity: 0.65; }
-
-/* ── Photo elements ── */
-.photo-banner {
-  width: 100%;
-  height: clamp(200px, 42vh, 500px);
-  object-fit: cover;
-  object-position: center center;
-  display: block;
-  background: var(--off-white);
-}
-
-.photo-banner-dark {
-  width: 100%;
-  height: clamp(220px, 44vh, 520px);
-  object-fit: cover;
-  object-position: center center;
-  display: block;
-  background: #111;
-}
-
-.photo-editorial {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center 30%;
-  display: block;
-  border-radius: 6px;
-  background: #1a1a1a;
-}
-
-/* ── Footer ── */
-.site-footer {
-  background: var(--white);
-  border-top: 0.5px solid var(--border-lt);
-  padding: 24px 0;
-}
-
-.footer-inner {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 40px;
-  flex-wrap: wrap;
-}
-
-/* ── Utilities ── */
-.sr-only {
-  position: absolute;
-  width: 1px; height: 1px;
-  padding: 0; margin: -1px;
-  overflow: hidden;
-  clip: rect(0,0,0,0);
-  white-space: nowrap;
-  border: 0;
-}
-
-.rule { border: none; border-top: 0.5px solid var(--border-lt); }
-
-/* ── Mobile ── */
-@media (max-width: 860px) {
-  .wrap { padding: 0 24px; }
-  .nav-logo { left: 24px; }
-  .nav-back { right: 24px; }
-  .sec-pad { padding: 56px 0; }
-  .sec-pad-sm { padding: 40px 0; }
-
-  .telemetry-inner {
-    grid-template-columns: 1fr 1fr;
-  }
-
-  .tele-item:nth-child(2) { border-right: none; }
-
-  .grid-2 {
-    grid-template-columns: 1fr;
-    gap: 32px;
-  }
-}
-
-@media (max-width: 540px) {
-  .wrap { padding: 0 20px; }
-
-  .telemetry-inner {
-    grid-template-columns: 1fr 1fr;
-  }
-
-  .tele-item {
-    padding: 14px 16px;
-  }
-
-  .tele-val { font-size: 18px; }
-
-  .site-footer { padding: 20px 0; }
-
-  .footer-inner {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 8px;
-  }
-}
-
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FITS — A Refined Access Platform for MARESA®</title>
+<meta name="description" content="FITS connects customers with product education, ordering support, and guided access for MARESA®.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
 
-  <!-- Navigation -->
-  <header class="site-nav">
-    <div class="nav-inner">
-      <a href="index.html" class="nav-logo" aria-label="FITS home">FITS</a>
-      <a href="product.html" class="nav-link">Explore MARESA&#174; &#8594;</a>
+<nav class="navbar">
+  <div class="container nav-inner">
+    <a href="index.html" class="nav-logo">FITS</a>
+    <div class="nav-links">
+      <a href="index.html" class="active">Home</a>
+      <a href="product.html">Product</a>
+      <a href="safety.html">Safety</a>
+      <a href="faq.html">FAQ</a>
+      <a href="contact.html">Contact</a>
     </div>
-  </header>
+    <div class="nav-cta">
+      <a href="contact.html" class="btn btn-primary btn-sm">Request Access</a>
+      <button class="nav-toggle" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</nav>
 
-  <main>
+<div class="mobile-overlay"></div>
+<div class="mobile-menu">
+  <a href="index.html">Home</a>
+  <a href="product.html">Product</a>
+  <a href="safety.html">Safety</a>
+  <a href="faq.html">FAQ</a>
+  <a href="contact.html">Contact</a>
+  <a href="contact.html" class="btn btn-primary" style="margin-top:24px; width:100%;">Request Access</a>
+</div>
 
-    <!-- Hero text -->
-    <section class="sec-white" style="padding: 64px 0 0;">
-      <div class="wrap" style="text-align: center; max-width: 700px;">
-        <div class="phase-label" style="justify-content: center;">GLP&#8209;1 &middot; ONCE WEEKLY</div>
-        <h1 class="t-display" style="margin-bottom: 20px;">
-          Precision&#8209;engineered<br />weight loss. <em>Redefined.</em>
-        </h1>
-        <p class="t-body" style="max-width: 460px; margin: 0 auto 28px;">
-          MARESA&#174; (semaglutide injection) &#8212; a once&#8209;weekly GLP&#8209;1 pen designed to work with your body&#8217;s own signals, guided by FITS clinicians every step of the way.
-        </p>
-        <a href="product.html" class="ed-link">Explore MARESA&#174; &#8594;</a>
-        <p class="t-legal" style="margin-top: 16px; max-width: 440px; margin-left: auto; margin-right: auto;">
-          A once&#8209;weekly GLP&#8209;1 pen, prescribed and monitored by licensed clinicians, for eligible patients.
-        </p>
-      </div>
-      <!-- Hero image: centered on seamless studio backdrop -->
-      <div style="
-        margin-top: 40px;
-        background: #d1d0cc;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        overflow: visible;
-        line-height: 0;
-      ">
-        <img
-          src="assets/long.jpg"
-          alt="MARESA&#174; semaglutide injection pen"
-          class="hero-image"
-          fetchpriority="high"
-        />
-      </div>
-    </section>
-
-    <!-- Telemetry strip -->
-    <div class="telemetry-strip" aria-label="Product specifications">
-      <div class="wrap" style="padding: 0;">
-        <div class="telemetry-inner">
-          <div class="tele-item">
-            <div class="tele-val">168<sup>H</sup></div>
-            <div class="tele-key">Dose interval</div>
-          </div>
-          <div class="tele-item">
-            <div class="tele-val">GLP<sup>&#8209;1</sup></div>
-            <div class="tele-key">Receptor agonist</div>
-          </div>
-          <div class="tele-item">
-            <div class="tele-val">SC</div>
-            <div class="tele-key">Subcutaneous delivery</div>
-          </div>
-          <div class="tele-item">
-            <div class="tele-val">Rx</div>
-            <div class="tele-key">Clinician&#8209;guided</div>
-          </div>
-        </div>
+<!-- HERO -->
+<section class="hero">
+  <div class="container hero-grid">
+    <div class="hero-copy reveal visible">
+      <span class="eyebrow">MARESA&reg; ACCESS PLATFORM</span>
+      <h1>A refined access platform for <em>MARESA&reg;</em></h1>
+      <p>FITS connects customers with product education, ordering support, and guided access for MARESA&reg;.</p>
+      <div class="hero-actions">
+        <a href="contact.html" class="btn btn-primary">Request Access</a>
+        <a href="product.html" class="btn btn-outline">View Product Information</a>
       </div>
     </div>
-
-    <!-- Phase 01: How MARESA works -->
-    <section class="sec-white sec-pad">
-      <div class="wrap">
-        <div class="phase-label left-only">PHASE 01 &#8212; INTRODUCTION</div>
-        <div class="grid-2">
-          <div>
-            <h2 class="t-h1" style="margin-bottom: 20px;">How MARESA&#174;<br />works.</h2>
-            <p class="t-body" style="margin-bottom: 14px;">
-              GLP&#8209;1 medications like MARESA&#174; mimic hormones that help regulate appetite and blood sugar, allowing individuals to feel satiated and satisfied for longer periods of time when combined with changes in eating and activity.
-            </p>
-            <p class="t-body">
-              With FITS, weekly MARESA&#174; injections are paired with clinician&#8209;guided dose adjustments, so your treatment can be slowed down or stepped up based on how you feel and how your body responds over time.
-            </p>
-          </div>
-          <div>
-            <div class="anno-card">
-              <div class="anno-label">Treatment progression</div>
-              <div class="anno-val">Gradual titration</div>
-              <div class="anno-unit">Dose adjusted over weeks</div>
-            </div>
-            <div class="anno-card">
-              <div class="anno-label">Adjustment protocol</div>
-              <div class="anno-val">Clinician&#8209;guided</div>
-              <div class="anno-unit">Based on response &amp; tolerance</div>
-            </div>
-            <div class="anno-card">
-              <div class="anno-label">Care delivery</div>
-              <div class="anno-val">Online, where available</div>
-              <div class="anno-unit">Prescription required</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Phase 02: Cinematic black section -->
-    <section class="sec-black sec-pad">
-      <div class="wrap">
-        <p style="font-size: 9px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.5); display: flex; align-items: center; gap: 10px; margin-bottom: 20px;">PHASE 02 &#8212; CLINICAL SUPPORT</p>
-        <div class="grid-2" style="gap: 48px;">
-          <div style="border-radius: 8px; overflow: hidden; flex-shrink: 0; max-width: 440px;">
-            <img
-              src="assets/fat.jpg"
-              alt="Person administering the MARESA&#174; GLP&#8209;1 injection"
-              class="photo-editorial"
-              loading="lazy"
-            />
-          </div>
-          <div>
-            <h2 class="t-display-w" style="margin-bottom: 20px;">Built for<br />the long run.</h2>
-            <p class="t-body-w" style="margin-bottom: 14px;">
-              MARESA&#174; is meant to be one part of a broader plan: nutrition habits, movement you can stick with, sleep, and ongoing check&#8209;ins that help keep weight loss sustainable rather than a short&#8209;term sprint.
-            </p>
-            <p class="t-body-w">
-              MARESA&#174; injections are paired with clinician&#8209;guided dose adjustments, so your treatment can be slowed down or stepped up based on how your body responds over time.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-  </main>
-
-  <footer class="site-footer">
-    <div class="wrap">
-      <div class="footer-inner">
-        <p class="t-legal">
-          FITS provides access to GLP&#8209;1 medications and clinical care through an online platform. This website does not replace professional medical advice.
-        </p>
-        <span class="t-legal" style="white-space: nowrap;">&#169; FITS. All rights reserved.</span>
+    <div class="hero-visual reveal visible">
+      <div class="stage gold-mark">
+        <img src="assets/maresa-pens-hero.png" alt="MARESA semaglutide injection pens">
+        <span class="stage-tag">Once-Weekly Injection</span>
       </div>
     </div>
-  </footer>
+  </div>
+</section>
 
+<!-- TRUST STRIP -->
+<section class="trust-strip">
+  <div class="container trust-grid">
+    <div class="trust-item">Product Education</div>
+    <div class="trust-item">Guided Ordering</div>
+    <div class="trust-item">Customer Support</div>
+    <div class="trust-item">Distributor Operations</div>
+  </div>
+</section>
+
+<!-- ABOUT FITS -->
+<section class="section">
+  <div class="container split">
+    <div class="split-copy reveal">
+      <span class="eyebrow">About FITS</span>
+      <h2>Healthcare access, designed with precision.</h2>
+      <p>FITS is a modern distribution and support platform built to simplify customer access, product education, and order coordination for MARESA&reg;.</p>
+      <p>Every touchpoint — from first inquiry to ongoing support — is designed around clarity, structure, and a calm customer experience.</p>
+      <a href="product.html" class="btn btn-outline">Explore the Product</a>
+    </div>
+    <div class="split-image reveal gold-mark">
+      <img src="assets/maresa-injection-shot.png" alt="MARESA injection administration">
+    </div>
+  </div>
+</section>
+
+<!-- WHY THIS MARKET -->
+<section class="section section-alt">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Market Position</span>
+      <h2>Why this market.</h2>
+      <p>Metabolic health access is shifting toward digital-first, customer-guided models. FITS is built around that shift.</p>
+    </div>
+    <div class="grid-4">
+      <div class="card reveal">
+        <div class="card-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 17l6-6 4 4 8-8"/></svg>
+        </div>
+        <h3>Rising Demand</h3>
+        <p>Growing interest in metabolic health solutions across customer segments.</p>
+      </div>
+      <div class="card reveal">
+        <div class="card-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg>
+        </div>
+        <h3>Direct-to-Consumer Shift</h3>
+        <p>Customers increasingly expect digital-first healthcare access and support.</p>
+      </div>
+      <div class="card reveal">
+        <div class="card-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M17 1l4 4-4 4M3 11V9a4 4 0 014-4h14M7 23l-4-4 4-4M21 13v2a4 4 0 01-4 4H3"/></svg>
+        </div>
+        <h3>Repeat-Order Potential</h3>
+        <p>A weekly-format product creates a natural foundation for ongoing engagement.</p>
+      </div>
+      <div class="card reveal">
+        <div class="card-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+        </div>
+        <h3>Scalable Workflows</h3>
+        <p>Digital support infrastructure designed to scale with customer volume.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW FITS WORKS -->
+<section class="section">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Process</span>
+      <h2>How FITS works.</h2>
+    </div>
+    <div class="steps-grid reveal">
+      <div class="step">
+        <div class="step-num">01</div>
+        <h4>Customer Inquiry</h4>
+        <p>A customer submits an inquiry through the FITS platform.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">02</div>
+        <h4>Information Review</h4>
+        <p>FITS provides product education and guidance materials.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">03</div>
+        <h4>Order Coordination</h4>
+        <p>Orders are coordinated through verified distribution partners.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">04</div>
+        <h4>Follow-Up Support</h4>
+        <p>Ongoing customer support continues throughout the relationship.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- OPERATING MODEL -->
+<section class="section section-alt">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Operating Model</span>
+      <h2>Built for scalable distribution.</h2>
+    </div>
+    <div class="grid-4">
+      <div class="card reveal">
+        <h3>Lead Capture</h3>
+        <p>Structured intake of customer inquiries across digital channels.</p>
+      </div>
+      <div class="card reveal">
+        <h3>Qualification Support</h3>
+        <p>Guided review process to help customers understand next steps.</p>
+      </div>
+      <div class="card reveal">
+        <h3>Supplier Coordination</h3>
+        <p>Operational coordination with distribution and supply partners.</p>
+      </div>
+      <div class="card reveal">
+        <h3>Repeat Customer Management</h3>
+        <p>Infrastructure to support ongoing, recurring customer relationships.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="section-dark cta-banner">
+  <div class="container">
+    <span class="eyebrow">Get Started</span>
+    <h2 class="reveal">A modern access experience for MARESA&reg;.</h2>
+    <div class="cta-actions">
+      <a href="contact.html" class="btn btn-light">Contact FITS</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <span class="nav-logo">FITS</span>
+        <p>A refined access and distribution platform for MARESA&reg;.</p>
+        <div class="social-icons" style="margin-top:24px;">
+          <a href="#" aria-label="LinkedIn"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5C4.98 4.88 3.85 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.5 8h4V23h-4V8zm7 0h3.8v2.1h.05c.53-1 1.83-2.1 3.77-2.1 4 0 4.7 2.6 4.7 6V23h-4v-6.5c0-1.6 0-3.6-2.2-3.6s-2.5 1.7-2.5 3.5V23h-4V8z"/></svg></a>
+          <a href="#" aria-label="X"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M18.9 1h3.7l-8 9.2L24 23h-7.3l-5.7-7.4L4.3 23H.6l8.6-9.8L0 1h7.5l5.2 6.8L18.9 1z"/></svg></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h5>FITS</h5>
+        <a href="index.html">Home</a>
+        <a href="contact.html">Investor Relations</a>
+        <a href="contact.html">Business Partnerships</a>
+      </div>
+      <div class="footer-col">
+        <h5>Product</h5>
+        <a href="product.html">Product Information</a>
+        <a href="product.html#gallery">Product Gallery</a>
+        <a href="product.html#docs">Documentation</a>
+      </div>
+      <div class="footer-col">
+        <h5>Safety</h5>
+        <a href="safety.html">Safety Information</a>
+        <a href="safety.html#emergency">Emergency Notice</a>
+        <a href="faq.html">Safety FAQ</a>
+      </div>
+      <div class="footer-col">
+        <h5>Legal</h5>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+        <a href="safety.html">Medical Disclaimer</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 FITS. All rights reserved.</p>
+    </div>
+    <p class="footer-legal-text">
+      MARESA&reg; is a trademark of its respective owner. FITS is an independent access, distribution, and information platform. FITS is not the manufacturer of MARESA&reg;. The information on this website is for educational and business presentation purposes only and does not replace medical advice from a licensed healthcare professional.
+    </p>
+  </div>
+</footer>
+
+<button class="back-to-top" aria-label="Back to top">
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+</button>
+
+<script src="js/app.js"></script>
 </body>
 </html>
