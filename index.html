@@ -52,9 +52,18 @@
       </div>
     </div>
     <div class="hero-visual reveal visible">
-      <div class="stage gold-mark">
-        <img src="assets/maresa-pens-hero.png" alt="MARESA semaglutide injection pens">
-        <span class="stage-tag">Once-Weekly Injection</span>
+      <div class="product-render">
+        <div class="product-render-glow"></div>
+        <img
+          src="assets/maresa-holo.png"
+          alt="MARESA injector pen"
+          class="product-render-img"
+          onerror="this.style.display='none'; document.getElementById('render-fallback').style.display='flex';"
+        >
+        <div id="render-fallback" class="product-render-placeholder" style="display:none;">
+          <span>MARESA&reg; RENDER</span>
+        </div>
+        <span class="product-render-tag">Once-Weekly Injection</span>
       </div>
     </div>
   </div>
